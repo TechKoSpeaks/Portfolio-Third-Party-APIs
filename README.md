@@ -40,7 +40,7 @@ THEN the saved events persist
 
 The following animation demonstrates the application functionality:
 
-![day planner demo](api screenshot goes here)
+![day planner demo](./Assets/Portfolio-Third-Party-APIs/Third-party-API-screenshot.png)
 
 
 This application uses Moment.js to pull date and time information and apply it to the calendar boxes based on the time of day. It will highlight the current time in day, with the previous times grayed out and the future time in yellow.
