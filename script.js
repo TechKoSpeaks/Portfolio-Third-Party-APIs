@@ -19,25 +19,25 @@ $(function () {
     currentdayEl.text(moment().format("MMMM Do YYYY, h:mm a"));
     var currentHourTime = parseInt(moment().format('k'));
 
-    
-    // Change color with a for loop, looping through each of the section blocks (9AM-5PM blocks)
+
+    // Change color with a for loop, looping through each of the section blocks (9AM-5PM blocks, sequential count to only include work hours.)
     // and setting appropriate color based on time of day (with row block past, present and future)
     for (var hourCount = 9; hourCount < 18; hourCount++) {
         var hourgrabEl = $("#hour-" + hourCount);
-        if(hourCount < currentHourTime) {
-            hourgrabEl.attr("class","row time-block past");
+        if (hourCount < currentHourTime) {
+            hourgrabEl.attr("class", "row time-block past");
         }
-        else if(hourCount === currentHourTime) {
-            hourgrabEl.attr("class","row time-block present");
+        else if (hourCount === currentHourTime) {
+            hourgrabEl.attr("class", "row time-block present");
         }
         else {
-            hourgrabEl.attr("class","row time-block future");
+            hourgrabEl.attr("class", "row time-block future");
         }
     }
 
 
-// Creates and calls init function using JSON to parse data into local storage, and then pulls the data value from storage when recalled
-    function initPage(){
+    // Creates and calls init function using JSON to parse data into local storage, and then pulls the data value from storage when recalled
+    function initPage() {
         var init9 = JSON.parse(localStorage.getItem("9AM"));
         nineAm.val(init9);
         // Parses each of the data elements into local storage to be retrieved upon recall
@@ -59,16 +59,16 @@ $(function () {
         fivePm.val(init17);
     }
     initPage();
-    
-    
+
+
 
 
     // Creates a save button function assigned to the buttons on the HTML, where if the used clicks save it will save the data to local storage
-    $(".saveBtn").on("click", function() {
+    $(".saveBtn").on("click", function () {
         userInput = $(this).siblings(".description").val().trim();
-    // sets text of hour span to update the text within .hour class   
+        // sets text of hour span to update the text within .hour class   
         hourSpan = $(this).siblings(".hour").text().trim();
-    // sets item to local storage using JSON and stringify   
+        // sets item to local storage using JSON and stringify   
         localStorage.setItem(hourSpan, JSON.stringify(userInput));
     })
 })
